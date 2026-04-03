@@ -25,15 +25,15 @@ class SpectrumScript(scripts.Script):
                     maximum=1.0,
                     value=0.25,
                     step=0.05,
-                    label="Prediction Weighting",
+                    label="Prediction Weighting (w)",
                     info="higher = long-term trend ; lower = short-term changes",
                 )
                 m = gr.Slider(
                     minimum=1,
-                    maximum=8,
+                    maximum=16,
                     value=6,
                     step=1,
-                    label="Polynomial Degree",
+                    label="Polynomial Degree (m)",
                     info="higher = complex & subtle patterns ; lower = stable & faster",
                 )
             with gr.Row():
@@ -42,7 +42,7 @@ class SpectrumScript(scripts.Script):
                     maximum=2.0,
                     value=0.5,
                     step=0.05,
-                    label="Regularization",
+                    label="Regularization (lam)",
                     info="higher = reduce overfitting ; lower = fit more data",
                 )
                 window_size = gr.Slider(
@@ -50,7 +50,7 @@ class SpectrumScript(scripts.Script):
                     maximum=10,
                     value=2,
                     step=1,
-                    label="Cache Window",
+                    label="Cache Window (window_size)",
                     info="higher = skip more steps ; lower = slower but more accurate",
                 )
             flex_window = gr.Slider(
@@ -58,7 +58,7 @@ class SpectrumScript(scripts.Script):
                 maximum=2.0,
                 value=0.0,
                 step=0.05,
-                label="Window Growth",
+                label="Window Growth (flex_window)",
                 info="higher = more speed & less accurate ; lower = more consistent accuracy but less speed gain",
             )
             with gr.Row():
