@@ -3,7 +3,7 @@
 [日本語版はこちら (README_JP.md)](README_JP.md)
 
 This is a port of the [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) designed to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). <BR>
-I have confirmed that it works for image generation using SDXL on Forge, reForge, and Forge Neo (I believe it also works for image generation using Anima and similar tools on Forge Neo).
+I have confirmed that it works for image generation using SDXL (Forge, reForge, Forge Neo) and Anima (Forge Neo). I think this extension will work with other image generation models as well.
 
 By utilizing the Spectrum feature and the Calibration feature uniquely implemented by the ComfyUI Spectrum SDXL Node, you can reduce image generation time while minimizing image degradation and visual changes. <BR>
 For technical details, please refer to the [ComfyUI Spectrum SDXL Node GitHub](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) or the [Spectrum project page](https://hanjq17.github.io/Spectrum/).
@@ -13,13 +13,25 @@ When porting to Forge/reForge, I referred to the implementation of the following
 - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
 
 ## 🖼 Performance comparison
-**SDXL Calibrated Comparisons (30-step Euler)**
-| Normal | Spectrum | Calibrated (strength 0.5) | Calibrated (strength 0.8) |
-| :----: | :------: | :----------------------: | :----------------------: |
-| ![Normal1](/images/1_nocache.png) | ![Spectrum1](/images/1_spectrum.png) | ![Calibrated0.5_1](/images/1_calibrated05.png) | ![Calibrated0.8_1](/images/1_calibrated08.png) |
-| **3.14 s** | **2.00 s** | **2.01 s** | **1.98 s** |
-| ![Normal2](/images/2_nocache.png) | ![Spectrum2](/images/2_spectrum.png) | ![Calibrated0.5_2](/images/2_calibrated05.png) | ![Calibrated0.8_2](/images/2_calibrated08.png) |
-| **3.19 s** | **1.90 s** | **1.86 s** | **1.88 s** |
+- Stable Diffusion WebUI Forge - Neo v2.17
+- Python 3.13.12
+- PyTorch 2.10.0+cu130
+- SageAttention 2
+- RTX 5090 
+
+**SDXL (30-step Euler)**
+| Normal |  Spectrum | Calibrated (strength 0.5) | Calibrated (strength 0.8) |
+| :---: | :---: | :---: | :---: |
+| ![Normal1](/images/sdxl1_normal.png) | ![Spectrum1](/images/sdxl1_spec.png) | ![Calibrated0.5_1](/images/sdxl1_cal05.png) | ![Calibrated0.8_1](/images/sdxl1_cal08.png) |
+| **3.30 s** | **1.99 s** | **2.03 s** | **1.98 s** |
+| ![Normal2](/images/sdxl2_normal.png) | ![Spectrum2](/images/sdxl2_spec.png) | ![Calibrated0.5_2](/images/sdxl2_cal05.png) | ![Calibrated0.8_2](/images/sdxl2_cal08.png) |
+| **3.28 s** | **1.91 s** | **1.81 s** | **1.92 s** |
+
+**Anima (30-step er-sde)**
+| Normal  | Spectrum | Calibrated (strength 0.5) |
+| :---: | :---: | :---: |
+| ![Anima_Normal](/images/anima_normal.png) | ![Anima_Spec](/images/anima_spec.png) | ![Anima_Cal0.5](/images/anima_cal05.png) |
+| **6.56 s** | **3.47 s** | **3.49 s** |
 
 ## 📦 Installation
 1. Open the **Extensions** tab in your WebUI.
@@ -33,11 +45,10 @@ When porting to Forge/reForge, I referred to the implementation of the following
 Check the checkbox in the “Calibrated Spectrum” tab of txt2img or img2img, set the parameters, and generate the image.
 
 ## 🛠 Parameter Settings and Recommended Values
-
 | Parameter | Range | Default | Description |
 | :--- | :--- | :--- | :--- |
 | **Prediction Weighting<BR>`w`** | 0.0 - 1.0 | **0.25** | Prediction weight<BR>High: Smoothing, Low (0.4–0.5): Maintains sharpness |
-| **Polynomial Degree<BR>`m`** | 1 - 8 | **6** | Coefficients of Chebyshev polynomial basis functions<BR>High: Complex & delicate, Low (3): Fast & stable |
+| **Polynomial Degree<BR>`m`** | 1 - 16 | **6** | Coefficients of Chebyshev polynomial basis functions<BR>High: Complex & delicate, Low (3): Fast & stable |
 | **Regularization<BR>`lam`** | 0 - 2 | **0.5** | Ridge regularization strength (λ)<BR>High (1): Prevents latent explosion, rainbow artifacts, and black output in low-precision mode |
 | **Cache Window<BR>`window_size`** | 1 - 10 | **2** | Initial prediction window size (number of steps to skip)<BR>High: Fast & low accuracy, Low: Slow & high accuracy |
 | **Window Growth<BR>`flex_window`** | 0.0 - 2.0 | **0.00** | Incremental value added to the window after each UNet path execution<BR>High: Fast & low accuracy, Low: Slow & high accuracy |
