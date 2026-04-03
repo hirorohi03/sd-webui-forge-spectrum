@@ -12,6 +12,15 @@ When porting to Forge/reForge, I referred to the implementation of the following
 - [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) Spectrum Integrated
 - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
 
+## 🖼 Performance comparison
+**SDXL Calibrated Comparisons (30-step Euler)**
+| Normal | Spectrum | Calibrated (strength 0.5) | Calibrated (strength 0.8) |
+| :----: | :------: | :----------------------: | :----------------------: |
+| ![Normal1](/images/1_nocache.png) | ![Spectrum1](/images/1_spectrum.png) | ![Calibrated0.5_1](/images/1_calibrated05.png) | ![Calibrated0.8_1](/images/1_calibrated08.png) |
+| **3.14 s** | **2.00 s** | **2.01 s** | **1.98 s** |
+| ![Normal2](/images/2_nocache.png) | ![Spectrum2](/images/2_spectrum.png) | ![Calibrated0.5_2](/images/2_calibrated05.png) | ![Calibrated0.8_2](/images/2_calibrated08.png) |
+| **3.19 s** | **1.90 s** | **1.86 s** | **1.88 s** |
+
 ## 📦 Installation
 1. Open the **Extensions** tab in your WebUI.
 2. Select **Install from URL**.
