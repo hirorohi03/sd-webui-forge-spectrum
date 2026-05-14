@@ -2,23 +2,25 @@
 
 [English README is here](README.md)
 
-[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)をStable Diffusion WebUI Forge/reForgeの拡張機能として動作するよう移植したものです（A1111では動作しません）。
+[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の`SpectrumSDXLCalibrated`ノードをStable Diffusion WebUI Forge/reForgeの拡張機能として動作するよう移植したものです（A1111では動作しません）。
 
 ---
 
 ## 重要なお知らせ
 
-オリジナルの[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の2026年5月3日の更新において、`SpectrumSDXLCalibrated`が**レガシー／非準拠ノード**に設定されました。
+オリジナルの[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の[2026年5月3日の更新](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl/commit/b7ac6ca0b5d9333a6f19527f6b1b3dfa256cbadb)において、`SpectrumSDXLCalibrated`ノードが**レガシー／非準拠ノード**に設定されました。
 
 以下は、[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)に記載された文章を翻訳したものです。
 
 > **レガシー／非準拠ノード：**`SpectrumSDXLCalibrated`ノードは、現在**レガシー**と見なされています。
 > 
-> *リピーターの方への説明：* このノードの以前のバージョンは、当初公式のforecaster実装を見つけることができなかったため、実質的にゼロから「バイブコーディング」されたものでした。その結果、「キャリブレーション」のような、興味深いものの論文に忠実ではない、いくらか原則に反する追加が行われてしまいました。
+> *リピーターの方への説明：* このノードの以前のバージョンは、当初公式のforecaster実装を見つけることができなかったため、実質的にゼロから「バイブコーディング」されたものでした。その結果、「キャリブレーション」のような、興味深いものの論文に忠実ではない、いくらか原則に反する追加が行われてしまいました。この問題は、[公式のforecasterコード](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py)を`SpectrumSDXL`ノードに移植することで解決されました。より安定的で原則に基づいた結果を得るため、この正確な実装へ移行してください。
 
-[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の移植版である**sd-webui-forge-spectrum (Calibrated Spectrum)** も、**レガシー／非準拠**な拡張機能とします。
+`SpectrumSDXLCalibrated`ノードの移植版である本拡張機能も、**レガシー／非準拠**な拡張機能とします。
 
-このリポジトリは現状のまま残しますが、**レガシー／非準拠**な拡張機能である点をご認識のうえでご利用ください。
+機能と性能は特に変更ありませんが、UIに **[LEGACY]** という表示が追加されます。**レガシー／非準拠**な拡張機能であることをご認識のうえでご利用ください。
+
+現在、`SpectrumSDXL`ノードをForge/reForgeの拡張機能へ移植作業中です。数日中に別リポジトリで公開できると思いますので少しお待ちください。
 
 ---
 

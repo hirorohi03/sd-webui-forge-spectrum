@@ -2,23 +2,25 @@
 
 [日本語版はこちら (README_JP.md)](README_JP.md)
 
-This is a port of the [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) designed to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). 
+This is a port of the `SpectrumSDXLCalibrated` node from [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). 
 
 ---
 
 ## Important Information
 
-In the May 3, 2026 update to the original [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), It has been announced that `SpectrumSDXLCalibrated` has been set to **Legacy / Non-Faithful Node**.
+In the [May 3, 2026 update](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl/commit/b7ac6ca0b5d9333a6f19527f6b1b3dfa256cbadb) to the original [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), It has been announced that `SpectrumSDXLCalibrated` node has been set to **Legacy / Non-Faithful Node**.
 
 The following is an announcement reposted from [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl).
 
 > **Legacy / Non-Faithful Node:** The `SpectrumSDXLCalibrated` node is now considered **legacy**. 
 > 
-> *Clarification for returning users:* The previous version of this node was essentially "vibe-coded" from scratch because I couldn't initially find the official forecaster implementation. This led to some non-principled additions like "calibration" which, while interesting, are not faithful to the paper.
+> *Clarification for returning users:* The previous version of this node was essentially "vibe-coded" from scratch because I couldn't initially find the official forecaster implementation. This led to some non-principled additions like "calibration" which, while interesting, are not faithful to the paper. This has now been solved by porting the [official forecaster code](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py) into the `SpectrumSDXL` node. Please migrate to the faithful implementation for more stable and principled results.
 
-**sd-webui-forge-spectrum (Calibrated Spectrum)**, a port of [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), has been also set to **Legacy / Non-Faithful Extension**.
+This extension, which is a port of`SpectrumSDXLCalibrated` node, has been also set to **Legacy / Non-Faithful** extension.
 
-This repository will remain as is, but please be aware that it is a **Legacy / Non-Faithful Extension**.
+There are no specific changes to functionality or performance, but the label **[LEGACY]** will be added to the UI. Please use this extension with the understanding that it is a **Legacy / Non-Faithful** extension.
+
+I am currently porting `SpectrumSDXL` node to a Forge/reForge extension. I plan to release it on a different repository within the next few days, so please bear with me for a little while.
 
 ---
 
