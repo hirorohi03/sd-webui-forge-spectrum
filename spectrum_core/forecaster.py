@@ -1,9 +1,14 @@
 # https://github.com/ruwwww/comfyui-spectrum-sdxl
 
+# [LEGACY / NON-FAITHFUL IMPLEMENTATION]
+# This node is kept for backward compatibility and experimentation.
+# It uses a non-standard "calibration" logic that is not part of the official Spectrum paper.
+# Please use the 'SpectrumSDXL' node for a faithful implementation.
+
 import math
 import torch
 
-# ====================== Spectrum with Residual Calibration ======================
+# ====================== Spectrum with Residual Calibration (Legacy) ======================
 class CalibratedFastChebyshevForecaster:
     def __init__(self, m: int, lam: float, steps: int):
         self.M = m

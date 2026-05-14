@@ -12,7 +12,7 @@ from modules.ui_components import InputAccordion
 
 class SpectrumScript(scripts.Script):
     def title(self):
-        return "Calibrated Spectrum"
+        return "Calibrated Spectrum [LEGACY]"
 
     def show(self, is_img2img):
         return scripts.AlwaysVisible
@@ -81,15 +81,15 @@ class SpectrumScript(scripts.Script):
             with gr.Row():
                 enable_calibration = gr.Checkbox(
                     value=True,
-                    label="Enable Calibration",
+                    label="Enable Calibration [LEGACY]",
                 )
                 calibration_strength = gr.Slider(
                     minimum=0.0,
                     maximum=1.0,
                     value=0.5,
                     step=0.05,
-                    label="Calibration Strength",
-                    info="higher = more dark & thicker ; lower = more pale & thinner",
+                    label="Calibration Strength [LEGACY]",
+                    info="higher = more dark & thicker ; lower = more pale & thinner (Not part of the official algorithm)",
                 )
 
         self.infotext_fields = [

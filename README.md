@@ -2,7 +2,26 @@
 
 [日本語版はこちら (README_JP.md)](README_JP.md)
 
-This is a port of the [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) designed to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). <BR>
+This is a port of the [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) designed to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). 
+
+---
+
+## Important Information
+
+In the May 3, 2026 update to the original [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), It has been announced that `SpectrumSDXLCalibrated` has been set to **Legacy / Non-Faithful Node**.
+
+The following is an announcement reposted from [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl).
+
+> **Legacy / Non-Faithful Node:** The `SpectrumSDXLCalibrated` node is now considered **legacy**. 
+> 
+> *Clarification for returning users:* The previous version of this node was essentially "vibe-coded" from scratch because I couldn't initially find the official forecaster implementation. This led to some non-principled additions like "calibration" which, while interesting, are not faithful to the paper.
+
+**sd-webui-forge-spectrum (Calibrated Spectrum)**, a port of [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), has been also set to **Legacy / Non-Faithful Extension**.
+
+This repository will remain as is, but please be aware that it is a **Legacy / Non-Faithful Extension**.
+
+---
+
 I have confirmed that it works for image generation using SDXL (Forge, reForge, Forge Neo) and Anima (Forge Neo). I think this extension will work with other image generation models as well.
 
 By utilizing the Spectrum feature and the Calibration feature uniquely implemented by the ComfyUI Spectrum SDXL Node, you can reduce image generation time while minimizing image degradation and visual changes. <BR>

@@ -2,7 +2,26 @@
 
 [English README is here](README.md)
 
-[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)をStable Diffusion WebUI Forge/reForgeの拡張機能として動作するよう移植したものです（A1111では動作しません）。<BR>
+[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)をStable Diffusion WebUI Forge/reForgeの拡張機能として動作するよう移植したものです（A1111では動作しません）。
+
+---
+
+## 重要なお知らせ
+
+オリジナルの[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の2026年5月3日の更新において、`SpectrumSDXLCalibrated`が**レガシー／非準拠ノード**に設定されました。
+
+以下は、[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)に記載された文章を翻訳したものです。
+
+> **レガシー／非準拠ノード：**`SpectrumSDXLCalibrated`ノードは、現在**レガシー**と見なされています。
+> 
+> *リピーターの方への説明：* このノードの以前のバージョンは、当初公式のforecaster実装を見つけることができなかったため、実質的にゼロから「バイブコーディング」されたものでした。その結果、「キャリブレーション」のような、興味深いものの論文に忠実ではない、いくらか原則に反する追加が行われてしまいました。
+
+[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の移植版である**sd-webui-forge-spectrum (Calibrated Spectrum)** も、**レガシー／非準拠**な拡張機能とします。
+
+このリポジトリは現状のまま残しますが、**レガシー／非準拠**な拡張機能である点をご認識のうえでご利用ください。
+
+---
+
 SDXL (Forge, reForge, Forge Neo)、およびAnima (Forge Neo) を利用した画像生成で動作することを確認しています。他の画像生成モデルでも動作するものがあると思います。
 
 Spectrum機能と、ComfyUI Spectrum SDXL Nodeが独自に実装しているCalibration機能を利用し、画質劣化と画像変化を最小に抑えながら画像生成の生成時間を削減できます。<BR>
