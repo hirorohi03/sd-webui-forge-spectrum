@@ -5,7 +5,7 @@ import sys
 import gradio as gr
 from spectrum_core.forecaster import SpectrumSDXLCalibrated
 
-from modules import scripts
+from modules import scripts, shared
 from modules.infotext_utils import PasteField
 from modules.ui_components import InputAccordion
 
@@ -141,6 +141,10 @@ class SpectrumScript(scripts.Script):
         # 二次プロセスのガード (ADetailer 等)
         p_type_name = str(type(p))
         if getattr(p, "_in_adetailer", False) or "Postprocessed" in p_type_name:
+            return
+
+        if shared.opts.skip_early_cond > 0.0 or shared.opts.s_min_uncond > 0.0:
+            print('Spectrum does not support "Ignore/Skip Negative Prompt" optimizations...')
             return
 
         unet = p.sd_model.forge_objects.unet
