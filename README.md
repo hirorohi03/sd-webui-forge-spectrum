@@ -1,16 +1,29 @@
 # sd-webui-forge-spectrum (Calibrated Spectrum)
 
-[日本語版はこちら (README_JP.md)](README_JP.md)
+<div align="center">
+
+### [🇺🇸 English](README.md) | [🇯🇵 日本語](README_JP.md) 
+
+</div>
 
 This is a port of the `SpectrumSDXLCalibrated` node from [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). 
 
 ---
 
-## Important Information
+## ⚠️ Important Information
 
 In the [May 3, 2026 update](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl/commit/b7ac6ca0b5d9333a6f19527f6b1b3dfa256cbadb) to the original [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), It has been announced that `SpectrumSDXLCalibrated` node has been set to **Legacy / Non-Faithful Node**.
 
-The following is an announcement reposted from [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl).
+There are two nodes in [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), and this extension is a port of `SpectrumSDXLC`.
+
+- `SpectrumSDXLC`
+    - Porting of the [official forecaster code](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py)
+    - This port has already been released as [sd-forge-spectrum-faithful](https://github.com/hirorohi03/sd-forge-spectrum-faithful)
+- `SpectrumSDXLCalibrated` （レガシー／非準拠ノード）
+    - There are some non-principled additions like "calibration" which are not faithful to the [paper](https://arxiv.org/abs/2603.01623)
+    - This extension is a port of this one
+
+The following is an excerpt from the README for [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl), updated on May 3, 2026.
 
 > **Legacy / Non-Faithful Node:** The `SpectrumSDXLCalibrated` node is now considered **legacy**. 
 > 
@@ -20,7 +33,8 @@ This extension, which is a port of`SpectrumSDXLCalibrated` node, has been also s
 
 There are no specific changes to functionality or performance, but the label **[LEGACY]** will be added to the UI. Please use this extension with the understanding that it is a **Legacy / Non-Faithful** extension.
 
-I am currently porting `SpectrumSDXL` node to a Forge/reForge extension. I plan to release it on a different repository within the next few days, so please bear with me for a little while.
+### 🆕 New
+**I have released a port of the** `SpectrumSDXL` **node as a Forge/reForge extension at [sd-forge-spectrum-faithful](https://github.com/hirorohi03/sd-forge-spectrum-faithful). Please give it a try.**
 
 ---
 
@@ -33,14 +47,14 @@ When porting to Forge/reForge, I referred to the implementation of the following
 - [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) Spectrum Integrated
 - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
 
-## 🖼 Performance comparison
+## 📊 Performance comparison
 - Stable Diffusion WebUI Forge - Neo v2.17
 - Python 3.13.12
 - PyTorch 2.10.0+cu130
 - SageAttention 2
 - RTX 5090 
 
-**SDXL (30-step Euler)**
+**waiIllustriousSDXL_v160 (30-step Euler)**
 | Normal |  Spectrum | Calibrated (strength 0.5) | Calibrated (strength 0.8) |
 | :---: | :---: | :---: | :---: |
 | ![Normal1](/images/sdxl1_normal.png) | ![Spectrum1](/images/sdxl1_spec.png) | ![Calibrated0.5_1](/images/sdxl1_cal05.png) | ![Calibrated0.8_1](/images/sdxl1_cal08.png) |
@@ -48,11 +62,14 @@ When porting to Forge/reForge, I referred to the implementation of the following
 | ![Normal2](/images/sdxl2_normal.png) | ![Spectrum2](/images/sdxl2_spec.png) | ![Calibrated0.5_2](/images/sdxl2_cal05.png) | ![Calibrated0.8_2](/images/sdxl2_cal08.png) |
 | **3.28 s** | **1.91 s** | **1.81 s** | **1.92 s** |
 
-**Anima (30-step er-sde)**
+**anima-preview (30-step er-sde)**
 | Normal  | Spectrum | Calibrated (strength 0.5) |
 | :---: | :---: | :---: |
 | ![Anima_Normal](/images/anima_normal.png) | ![Anima_Spec](/images/anima_spec.png) | ![Anima_Cal0.5](/images/anima_cal05.png) |
 | **6.56 s** | **3.47 s** | **3.49 s** |
+
+- Each one generates slightly different images.
+- Setting the Calibration Strength to a high value may generate more artifacts than others.
 
 ## 📦 Installation
 1. Open the **Extensions** tab in your WebUI.
@@ -62,10 +79,10 @@ When porting to Forge/reForge, I referred to the implementation of the following
 5. Click **Apply and quit**.
 6. Restart your WebUI.
 
-## How to Use
+## 🖼️ How to Use
 Check the checkbox in the “Calibrated Spectrum” tab of txt2img or img2img, set the parameters, and generate the image.
 
-## 🛠 Parameter Settings and Recommended Values
+## 🛠️ Parameter Settings and Recommended Values
 | Parameter | Range | Default | Description |
 | :--- | :--- | :--- | :--- |
 | **Prediction Weighting<BR>`w`** | 0.0 - 1.0 | **0.25** | Prediction weight<BR>High: Smoothing, Low (0.4–0.5): Maintains sharpness |

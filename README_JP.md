@@ -1,26 +1,40 @@
 # sd-webui-forge-spectrum (Calibrated Spectrum)
 
-[English README is here](README.md)
+<div align="center">
+
+### [🇺🇸 English](README.md) | [🇯🇵 日本語](README_JP.md) 
+
+</div>
 
 [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の`SpectrumSDXLCalibrated`ノードをStable Diffusion WebUI Forge/reForgeの拡張機能として動作するよう移植したものです（A1111では動作しません）。
 
 ---
 
-## 重要なお知らせ
+## ⚠️ 重要なお知らせ
 
 オリジナルの[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)の[2026年5月3日の更新](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl/commit/b7ac6ca0b5d9333a6f19527f6b1b3dfa256cbadb)において、`SpectrumSDXLCalibrated`ノードが**レガシー／非準拠ノード**に設定されました。
 
-以下は、[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)に記載された文章を翻訳したものです。
+[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)には二つのノードがあり、当拡張機能は `SpectrumSDXLCalibrated` を移植したものです。
+
+- `SpectrumSDXLC`
+    - [公式のforecasterコード](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py)の忠実な実装
+    - こちらの移植版は[sd-forge-spectrum-faithful](https://github.com/hirorohi03/sd-forge-spectrum-faithful)で公開済み
+- `SpectrumSDXLCalibrated` （レガシー／非準拠ノード）
+    - 「キャリブレーション」などの[論文](https://arxiv.org/abs/2603.01623)に忠実ではない原則に反した機能を実装
+    - 当拡張機能はこちらを移植したもの
+
+以下は、2026年5月3日に更新された[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)のREADMEから抜粋して翻訳したものです。
 
 > **レガシー／非準拠ノード：**`SpectrumSDXLCalibrated`ノードは、現在**レガシー**と見なされています。
 > 
 > *リピーターの方への説明：* このノードの以前のバージョンは、当初公式のforecaster実装を見つけることができなかったため、実質的にゼロから「バイブコーディング」されたものでした。その結果、「キャリブレーション」のような、興味深いものの論文に忠実ではない、いくらか原則に反する追加が行われてしまいました。この問題は、[公式のforecasterコード](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py)を`SpectrumSDXL`ノードに移植することで解決されました。より安定的で原則に基づいた結果を得るため、この正確な実装へ移行してください。
 
-`SpectrumSDXLCalibrated`ノードの移植版である本拡張機能も、**レガシー／非準拠**な拡張機能とします。
+`SpectrumSDXLCalibrated`ノードの移植版である当拡張機能も、**レガシー／非準拠**な拡張機能とします。
 
 機能と性能は特に変更ありませんが、UIに **[LEGACY]** という表示が追加されます。**レガシー／非準拠**な拡張機能であることをご認識のうえでご利用ください。
 
-現在、`SpectrumSDXL`ノードをForge/reForgeの拡張機能へ移植作業中です。数日中に別リポジトリで公開できると思いますので少しお待ちください。
+### 🆕 New!
+`SpectrumSDXL`**ノードをForge/reForgeの拡張機能として移植したものを[sd-forge-spectrum-faithful](https://github.com/hirorohi03/sd-forge-spectrum-faithful)にて公開しました。よろしければ使ってみてください。**
 
 ---
 
@@ -33,14 +47,14 @@ Forge/reForgeへの移植にあたっては以下の拡張機能の実装を参�
 - [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)のSpectrum Integrated
 - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
 
-## 🖼 性能比較
+## 📊 性能比較
 - Stable Diffusion WebUI Forge - Neo v2.17
 - Python 3.13.12
 - PyTorch 2.10.0+cu130
 - SageAttention 2
 - RTX 5090 
 
-**SDXL (30-step Euler)**
+**waiIllustriousSDXL_v160 (30-step Euler)**
 | Normal |  Spectrum | Calibrated (strength 0.5) | Calibrated (strength 0.8) |
 | :---: | :---: | :---: | :---: |
 | ![Normal1](/images/sdxl1_normal.png) | ![Spectrum1](/images/sdxl1_spec.png) | ![Calibrated0.5_1](/images/sdxl1_cal05.png) | ![Calibrated0.8_1](/images/sdxl1_cal08.png) |
@@ -48,11 +62,14 @@ Forge/reForgeへの移植にあたっては以下の拡張機能の実装を参�
 | ![Normal2](/images/sdxl2_normal.png) | ![Spectrum2](/images/sdxl2_spec.png) | ![Calibrated0.5_2](/images/sdxl2_cal05.png) | ![Calibrated0.8_2](/images/sdxl2_cal08.png) |
 | **3.28 s** | **1.91 s** | **1.81 s** | **1.92 s** |
 
-**Anima (30-step er-sde)**
+**anima-preview (30-step er-sde)**
 | Normal  | Spectrum | Calibrated (strength 0.5) |
 | :---: | :---: | :---: |
 | ![Anima_Normal](/images/anima_normal.png) | ![Anima_Spec](/images/anima_spec.png) | ![Anima_Cal0.5](/images/anima_cal05.png) |
 | **6.56 s** | **3.47 s** | **3.49 s** |
+
+- いずれも少し異なる画像が生成されます。
+- Calibration Strengthを高くするとアーティファクトを生成することが他より多いかもしれません。
 
 ## 📦 インストール方法
 1. WebUIの**Extensions**タブを開きます。
@@ -62,10 +79,10 @@ Forge/reForgeへの移植にあたっては以下の拡張機能の実装を参�
 5. **Apply and quit**をクリックします。
 6. WebUIを再起動します。
 
-## 使用方法
+## 🖼️ 使用方法
 txt2imgまたはimg2imgのCalibrated Spectrumタブのチェックボックスをチェックし、パラメータを設定して生成してください。
 
-## 🛠 パラメータ設定と推奨値
+## 🛠️ パラメータ設定と推奨値
 
 | パラメータ | 範囲 | 初期値 | 説明 |
 | :--- | :--- | :--- | :--- |
