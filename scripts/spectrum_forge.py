@@ -3,7 +3,7 @@
 
 import sys
 import gradio as gr
-from spectrum_core.forecaster import SpectrumSDXLCalibrated
+from spectrum_core_calibrated.forecaster import SpectrumSDXLCalibrated
 
 from modules import scripts, shared
 from modules.infotext_utils import PasteField
@@ -12,7 +12,7 @@ from modules.ui_components import InputAccordion
 
 class SpectrumScript(scripts.Script):
     def title(self):
-        return "Calibrated Spectrum [LEGACY]"
+        return "Calibrated Spectrum Adaptive Forecaster [LEGACY]"
 
     def show(self, is_img2img):
         return scripts.AlwaysVisible
