@@ -1,4 +1,4 @@
-# sd-webui-forge-spectrum (Calibrated Spectrum)
+# sd-webui-forge-spectrum (Calibrated Spectrum Adaptive Forecaster [LEGACY])
 
 <div align="center">
 
@@ -38,14 +38,34 @@
 
 ---
 
-SDXL (Forge, reForge, Forge Neo)、およびAnima (Forge Neo) を利用した画像生成で動作することを確認しています。他の画像生成モデルでも動作するものがあると思います。
+## 🚀 概要
 
-Spectrum機能と、ComfyUI Spectrum SDXL Nodeが独自に実装しているCalibration機能を利用し、画質劣化と画像変化を最小に抑えながら画像生成の生成時間を削減できます。<BR>
-技術の詳細については[ComfyUI Spectrum SDXL NodeのGIthub](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)や[Spectrumのプロジェクトページ](https://hanjq17.github.io/Spectrum/)などを参照してください。
+Spectrum機能と、[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)が独自に実装しているCalibration機能を利用し、画質劣化と画像変化を最小に抑えながら画像生成の生成時間を削減できます。
+
+SDXL (Forge, reForge, Forge Neo)、およびAnima (Forge Neo) を利用した画像生成で動作することを確認しています。
+
+技術の詳細については[ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)や[Spectrumのプロジェクトページ](https://hanjq17.github.io/Spectrum/)などを参照してください。
 
 Forge/reForgeへの移植にあたっては以下の拡張機能の実装を参考にしました。
 - [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)のSpectrum Integrated
 - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
+
+## 📖 更新履歴
+
+### 2026/5/16
+
+- 他のSpectrum拡張機能と同時にインストールしてもエラーが発生しないようにしました（同時に有効にして生成した場合の動作は保証しません）。
+    - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
+    - [sd-forge-spectrum-faithful](https://github.com/hirorohi03/sd-forge-spectrum-faithful)
+- UIでの機能名を`Calibrated Spectrum [LEGACY]`から`Calibrated Spectrum Adaptive Forecaster [LEGACY]`に変更しました。
+
+### 2026/5/14
+
+- UIでの機能とCalibration設定の名称に[LEGACY]を追加しました。
+    - 処理内容に変更はありません。
+- [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) Spectrum Integratedのエラー処理をマージしました。
+    - [Commits cd837f4 on May 14, 2026](https://github.com/Haoming02/sd-webui-forge-classic/commit/cd837f4fedf302bb160d23fe82bd15e457b1e6b9)
+    - Forge Neoの`Settings`の`Ignore Negative Prompt During Later Steps`または`Skip Negative Prompt During Later Steps`と併用した場合のエラー処理。
 
 ## 📊 性能比較
 - Stable Diffusion WebUI Forge - Neo v2.17
@@ -96,11 +116,23 @@ txt2imgまたはimg2imgのCalibrated Spectrumタブのチェックボックス�
 | **Enable Calibration<BR>`enable_calibration`** | True / False | **True** | Calibrationの有効／無効 |
 |  **Calibration Strength<BR>`calibration_strength`** | 0.0 - 1.0 | **0.5** | Calibrationの強さ<BR>高：濃く＆太く、低：薄く＆細く |
 
+[Anima Turbo LoRA](https://civitai.com/models/2560840/)や[DMD2 LoRA](https://civitai.com/models/2466415/)などのステップ数削減LoRAと併用する場合はWarmup Stepsを1～2に減らしてください。
+
+## ⚠️ 既知の制約
+
+- この拡張機能は以下のSpectrum機能と競合せずインストールできますが、同時に有効にして生成した場合の動作は保証しません。
+    - [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)のSpectrum Integrated
+    - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
+    - [sd-forge-spectrum-faithful](https://github.com/hirorohi03/sd-forge-spectrum-faithful)
+- Forge Neoの`Settings`の`Ignore Negative Prompt During Later Steps`または`Skip Negative Prompt During Later Steps`と併用した場合にエラーが発生する可能性があります。
+
 ## 📜 クレジットと参考文献
 *   **論文**: [Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration](https://arxiv.org/abs/2603.01623)
 *   **プロジェクトページ**: [https://hanjq17.github.io/Spectrum/](https://hanjq17.github.io/Spectrum/)
 *   **公式リポジトリ**: [hanjq17/Spectrum](https://github.com/hanjq17/Spectrum)
-*   **ComfyUI 実装**: [ruwwww/ComfyUI-Spectrum-sdxl](https://github.com/ruwwww/comfyui-spectrum-sdxl)
+*   **ComfyUI 実装**: [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) by [A. Izzuddin Al Faruq](https://github.com/ruwwww/)
+*   **移植コードの参考**: [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum) by [wai55555](https://github.com/wai55555)
+*   **移植コードの参考**: [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) Spectrum Integrated by [Haoming](https://github.com/Haoming02)
 
 ## ⚖️ ライセンス
 本プロジェクトは **MIT License** の下で公開されています。
